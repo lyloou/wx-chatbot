@@ -1,31 +1,31 @@
 package com.yanceyzhang.commons.wx.chatbot.message;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
-
 /**
  * 图文消息
- * @author yanceyzhang
  *
+ * @author yanceyzhang
  */
 public class NewsMessage implements Message {
-	public static final int MAX_ARTICLE_CNT = 5;
-	public static final int MIN_ARTICLE_CNT = 1;
-	
-	private List<NewsArticle> articles = new ArrayList<NewsArticle>();
-	
-	 public void addNewsArticle(NewsArticle newsArticle) {
+    public static final int MAX_ARTICLE_CNT = 5;
+    public static final int MIN_ARTICLE_CNT = 1;
+
+    private List<NewsArticle> articles = new ArrayList<NewsArticle>();
+
+    public void addNewsArticle(NewsArticle newsArticle) {
         if (articles.size() >= MAX_ARTICLE_CNT) {
             throw new IllegalArgumentException("number of articles can't more than " + MAX_ARTICLE_CNT);
         }
         articles.add(newsArticle);
-	 }
-	 
-	public String toJsonString() {
+    }
+
+    public String toJsonString() {
         Map<String, Object> items = new HashMap<String, Object>();
         items.put("msgtype", "news");
 

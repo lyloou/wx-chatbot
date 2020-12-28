@@ -1,30 +1,23 @@
 package com.yanceyzhang.commons.wx.chatbot.utils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.yanceyzhang.commons.wx.chatbot.utils.dto.ImageBase64Md5;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
 
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
-
-import com.yanceyzhang.commons.wx.chatbot.utils.dto.ImageBase64Md5;
-
 
 public class Base64Utils {
 
-	
-	
+
 	/**
 	 * 本地图片转换
+	 *
 	 * @param imgFile 图片本地路径
 	 * @return
-	 *
 	 * @author yanceyzhang
 	 */
 	public static ImageBase64Md5 ImageToBase64ByLocal(String imgFile) {
@@ -42,12 +35,12 @@ public class Base64Utils {
 		String base64 = Base64.getEncoder().encodeToString(data);
 		return new ImageBase64Md5(base64, DigestUtils.md5Hex(data));
 	}
+
 	/**
 	 * 在线图片转换
-	 * 
+	 *
 	 * @param imgURL 图片线上路径
 	 * @return
-	 *
 	 * @author yanceyzhang
 	 */
 	public static ImageBase64Md5 ImageToBase64ByOnline(String imgURL) {
@@ -67,9 +60,9 @@ public class Base64Utils {
 			while ((len = is.read(by)) != -1) {
 				data.write(by, 0, len);
 			}
-			byte[] b=data.toByteArray();
-			String base64= Base64.getEncoder().encodeToString(b);
-			String md5= DigestUtils.md5Hex(b);
+			byte[] b = data.toByteArray();
+			String base64 = Base64.getEncoder().encodeToString(b);
+			String md5 = DigestUtils.md5Hex(b);
 			is.close();
 			conn.disconnect();
 			data.close();
@@ -82,7 +75,7 @@ public class Base64Utils {
 
 	/**
 	 * base64字符串转换成图片
-	 * 
+	 *
 	 * @param imgStr      base64字符
 	 * @param imgFilePath 图片存放路径
 	 * @return
@@ -111,16 +104,16 @@ public class Base64Utils {
 			return false;
 		}
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		// 本地图片地址
 //		String url = "C:/Users/yance/Desktop/qywx_15952244277616.png";
 //		ImageBase64Md5  imageBase64Md5 = Base64Utils.ImageToBase64ByLocal(url);
 //		System.out.println(imageBase64Md5.getMd5());
-		
+
 		// 在线图片地址
 		String string = "https://t8.baidu.com/it/u=3775602298,2697846462&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1595834379&t=f2fc08916bdec3f7b3b8c0e018d04ae6";
-		ImageBase64Md5  image = Base64Utils.ImageToBase64ByOnline(string);
+		ImageBase64Md5 image = Base64Utils.ImageToBase64ByOnline(string);
 		System.out.println(image.getMd5());
 		System.out.println(Base64Utils.Base64ToImage(image.getBase64(), "C:/Users/yance/Desktop/test2.jpg"));
 	}

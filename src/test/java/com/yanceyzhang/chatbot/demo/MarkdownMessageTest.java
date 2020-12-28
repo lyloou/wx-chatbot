@@ -1,14 +1,14 @@
 package com.yanceyzhang.chatbot.demo;
 
-import java.util.ArrayList;
-
-import org.junit.Test;
-
 import com.yanceyzhang.commons.wx.chatbot.SendResult;
 import com.yanceyzhang.commons.wx.chatbot.WxChatbotClient;
 import com.yanceyzhang.commons.wx.chatbot.message.MarkdownMessage;
+import org.junit.Test;
+
+import java.util.ArrayList;
 
 /**
+ *
  */
 public class MarkdownMessageTest {
 
@@ -54,15 +54,15 @@ public class MarkdownMessageTest {
         SendResult result = WxChatbotClient.send(TestConfig.CHATBOT_WEBHOOK, message);
         System.out.println(result);
     }
-    
+
     @Test
     public void testSendMarkdownMessage1() throws Exception {
-    	 MarkdownMessage message = new MarkdownMessage();
-			 message.add(MarkdownMessage.getHeaderText(3, "有新用户注册啦"));
-			 message.add(MarkdownMessage.getReferenceText("手机号： "+"183XXXXXXXX"));
-			 message.add("\n\n");
-			 message.add(MarkdownMessage.getReferenceText("用户名： "+"唐三"));
-			 message.add("\n\n");
+        MarkdownMessage message = new MarkdownMessage();
+        message.add(MarkdownMessage.getHeaderText(3, "有新用户注册啦"));
+        message.add(MarkdownMessage.getReferenceText("手机号： " + "183XXXXXXXX"));
+        message.add("\n\n");
+        message.add(MarkdownMessage.getReferenceText("用户名： " + "唐三"));
+        message.add("\n\n");
         SendResult result = WxChatbotClient.send(TestConfig.CHATBOT_WEBHOOK, message);
         System.out.println(result);
     }

@@ -10,6 +10,7 @@ import java.util.Map;
 
 
 /**
+ *
  */
 public class TextMessage implements Message {
 
@@ -36,18 +37,17 @@ public class TextMessage implements Message {
     public void setIsAtAll(boolean isAtAll) {
         this.isAtAll = isAtAll;
     }
-    
-    
+
 
     public List<String> getMentionedMobileList() {
-		return mentionedMobileList;
-	}
+        return mentionedMobileList;
+    }
 
-	public void setMentionedMobileList(List<String> mentionedMobileList) {
-		this.mentionedMobileList = mentionedMobileList;
-	}
+    public void setMentionedMobileList(List<String> mentionedMobileList) {
+        this.mentionedMobileList = mentionedMobileList;
+    }
 
-	public String toJsonString() {
+    public String toJsonString() {
         Map<String, Object> items = new HashMap<String, Object>();
         items.put("msgtype", "text");
 
@@ -56,12 +56,12 @@ public class TextMessage implements Message {
             throw new IllegalArgumentException("text should not be blank");
         }
         textContent.put("content", text);
-        if(isAtAll) {
-        	if(mentionedMobileList==null) mentionedMobileList=new ArrayList<String>();
-        	mentionedMobileList.add("@all");
+        if (isAtAll) {
+            if (mentionedMobileList == null) mentionedMobileList = new ArrayList<String>();
+            mentionedMobileList.add("@all");
         }
         if (mentionedMobileList != null && !mentionedMobileList.isEmpty()) {
-        	textContent.put("mentioned_mobile_list", mentionedMobileList);
+            textContent.put("mentioned_mobile_list", mentionedMobileList);
         }
         items.put("text", textContent);
         return JSON.toJSONString(items);

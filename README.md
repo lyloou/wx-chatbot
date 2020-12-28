@@ -1,3 +1,5 @@
+https://github.com/yanceyZhang/wx-chatbot
+
 ### 简介
 企业微信2.8.7新版本上线了“群机器人”功能，
 wx-chatbot是基于企业微信群机器人API的脚手架。

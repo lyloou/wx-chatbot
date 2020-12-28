@@ -8,14 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ *
  */
 public class MarkdownMessage implements Message {
 
     private List<String> items = new ArrayList<String>();
-
-    public void add(String text) {
-        items.add(text);
-    }
 
     public static String getBoldText(String text) {
         return "**" + text + "**";
@@ -73,6 +70,10 @@ public class MarkdownMessage implements Message {
         }
         sb.append("- " + unorderItem.get(unorderItem.size() - 1));
         return sb.toString();
+    }
+
+    public void add(String text) {
+        items.add(text);
     }
 
     public String toJsonString() {

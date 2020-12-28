@@ -2,7 +2,6 @@ package com.yanceyzhang.commons.wx.chatbot;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yanceyzhang.commons.wx.chatbot.message.Message;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -15,16 +14,17 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 /**
+ *
  */
 public class WxChatbotClient {
 
     static HttpClient httpclient = HttpClients.createDefault();
 
-    public static SendResult send(String webhook, Message message) throws IOException{
+    public static SendResult send(String webhook, Message message) throws IOException {
 
-    	if(StringUtils.isBlank(webhook)){
-    		return new SendResult();
-    	}
+        if (StringUtils.isBlank(webhook)) {
+            return new SendResult();
+        }
         HttpPost httppost = new HttpPost(webhook);
         httppost.addHeader("Content-Type", "application/json; charset=utf-8");
         StringEntity se = new StringEntity(message.toJsonString(), "utf-8");

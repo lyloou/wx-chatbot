@@ -1,6 +1,7 @@
 package com.yanceyzhang.commons.wx.chatbot.message;
 
 /**
+ *
  */
 public interface Message {
 

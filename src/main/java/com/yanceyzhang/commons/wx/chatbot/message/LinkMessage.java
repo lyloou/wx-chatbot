@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ *
  */
 public class LinkMessage implements Message {
 
@@ -58,12 +59,12 @@ public class LinkMessage implements Message {
         }
         linkContent.put("title", title);
 
-        if (StringUtils.isBlank(messageUrl)){
+        if (StringUtils.isBlank(messageUrl)) {
             throw new IllegalArgumentException("messageUrl should not be blank");
         }
         linkContent.put("messageUrl", messageUrl);
 
-        if (StringUtils.isBlank(text)){
+        if (StringUtils.isBlank(text)) {
             throw new IllegalArgumentException("text should not be blank");
         }
         linkContent.put("text", text);

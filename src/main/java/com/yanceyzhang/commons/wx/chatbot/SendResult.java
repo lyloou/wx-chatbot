@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ *
  */
 public class SendResult {
     private boolean isSuccess;
@@ -36,7 +37,7 @@ public class SendResult {
         this.errorMsg = errorMsg;
     }
 
-    public String toString(){
+    public String toString() {
         Map<String, Object> items = new HashMap<String, Object>();
         items.put("errorCode", errorCode);
         items.put("errorMsg", errorMsg);
